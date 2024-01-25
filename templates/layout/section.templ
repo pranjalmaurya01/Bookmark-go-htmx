@@ -1,0 +1,17 @@
+package layout
+
+import "bookmark/templates/components"
+
+templ Section(name string,) {
+	<section>
+		// <h2 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200">{ name }</h2>
+		<div class="p-4 grid grid-cols-5 gap-4">
+			@components.Card()
+			@components.Card()
+			@components.Card()
+			@components.Card()
+			@components.Card()
+			@components.Card()
+		</div>
+	</section>
+}

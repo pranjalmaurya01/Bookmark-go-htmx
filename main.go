@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bookmark/templates"
+	"bookmark/templates/pages"
 	"bookmark/utilities"
 	"context"
 
@@ -12,7 +12,7 @@ func main() {
 	e := echo.New()
 
 	e.GET("/", func(c echo.Context) error {
-		component := templates.Hello("Pranjal")
+		component := pages.Home()
 		return component.Render(context.Background(), c.Response().Writer)
 	})
 
