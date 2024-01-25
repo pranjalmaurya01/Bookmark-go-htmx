@@ -1,9 +1,10 @@
 package pages
 
 import "bookmark/templates/layout"
+import "bookmark/models"
 
-templ Home() {
+templ Home(websites []models.Website) {
 	@layout.Base() {
-		@layout.Section("Favourites")
+		@layout.Section("Favourites", websites)
 	}
 }
