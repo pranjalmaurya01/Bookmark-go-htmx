@@ -4,12 +4,9 @@ import "bookmark/templates/components"
 import "bookmark/models"
 
 templ Section(name string,websites []models.Website) {
-	<section>
-		// <h2 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200">{ name }</h2>
-		<div class="p-4 grid grid-cols-5 gap-4">
-			for i:=0;i<len(websites);i++ {
-				@components.Card(websites[i])
-			}
-		</div>
-	</section>
+	<div class="p-4 grid grid-cols-1 md:grid-cols-5 gap-4" id={ name }>
+		for i:=0;i<len(websites);i++ {
+			@components.Card(websites[i])
+		}
+	</div>
 }

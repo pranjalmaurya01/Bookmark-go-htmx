@@ -2,9 +2,11 @@ package pages
 
 import "bookmark/templates/layout"
 import "bookmark/models"
+import "bookmark/templates/components"
 
 templ Home(websites []models.Website) {
 	@layout.Base() {
 		@layout.Section("Favourites", websites)
+		@components.FloatingBtn()
 	}
 }

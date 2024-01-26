@@ -1,0 +1,26 @@
+package components 
+
+templ AddWebsiteForm() {
+	<form
+		hx-post="/add-website"
+		hx-target="#Favourites"
+		hx-swap="beforeend"
+		hx-on::after-request="add_website_modal.close()"
+	>
+		<label class="form-control w-full">
+			<div class="label">
+				<span class="label-text">Link</span>
+			</div>
+			<div class="flex items-center">
+				<input value="https://fonts.google.com/icons?selected=Material+Icons+Outlined:save:&icon.query=save&icon.set=Material+Icons" type="url" name="url" class="input input-bordered w-full flex-1"/>
+				<div class="px-4">
+					<button class="btn">
+						<span class="material-icons">
+							save
+						</span>
+					</button>
+				</div>
+			</div>
+		</label>
+	</form>
+}

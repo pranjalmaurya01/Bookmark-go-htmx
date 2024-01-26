@@ -1,0 +1,21 @@
+package components
+
+templ FloatingBtn() {
+	<div class="fixed bottom-5 right-6 bg-white dark:bg-slate-800 rounded-full ring-slate-900/5 shadow-xl">
+		<button class="p-4" onclick="add_website_modal.showModal()">
+			<span class="material-icons text-slate-400 font-semibold">
+				add
+			</span>
+		</button>
+		<dialog id="add_website_modal" class="modal">
+			<div class="modal-box">
+				<h3 class="font-bold text-lg">Add Website</h3>
+				<p class="mb-3 text-slate-500 text-sm">We will automatically fetch other details</p>
+				@AddWebsiteForm()
+			</div>
+			<form method="dialog" class="modal-backdrop">
+				<button class="outline-none">close</button>
+			</form>
+		</dialog>
+	</div>
+}

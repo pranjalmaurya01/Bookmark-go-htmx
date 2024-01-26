@@ -2,6 +2,7 @@ package main
 
 import (
 	"bookmark/models"
+	"bookmark/templates/components"
 	"bookmark/templates/pages"
 	"bookmark/utilities"
 	"context"
@@ -29,6 +30,16 @@ func main() {
 			fmt.Println("err", err)
 		}
 		component := pages.Home(websites)
+		return component.Render(context.Background(), c.Response().Writer)
+	})
+
+	e.POST("/add-website", func(c echo.Context) error {
+		var websites []models.Website
+		err := db.Find(&websites).Error
+		if err != nil {
+			fmt.Println("err", err)
+		}
+		component := components.Card(websites[0])
 		return component.Render(context.Background(), c.Response().Writer)
 	})
 
