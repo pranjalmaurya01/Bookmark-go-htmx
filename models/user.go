@@ -4,6 +4,6 @@ import "gorm.io/gorm"
 
 type User struct {
 	gorm.Model
-	Name     string
-	Websites []Website `gorm:"foreignkey:ID;"`
+	Name string
+	// Websites []Website `gorm:"foreignkey:ID;"`
 }

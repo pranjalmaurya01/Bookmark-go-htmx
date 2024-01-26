@@ -3,17 +3,31 @@ package components
 import "bookmark/models"
 
 templ Card(website models.Website) {
-	<a href={ templ.SafeURL(website.Url) } target="_">
-		<div class="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
-			<div>
-				<span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
-					<svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"></svg>
-				</span>
+	<a href={ templ.SafeURL(website.Url) } target="_" rel="prefetch">
+		<div
+			class="h-full bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl flex flex-col
+		"
+		>
+			<div class="h-32">
+				if len(website.Img)==0 {
+					<span class="material-icons">
+						launch
+					</span>
+				} else {
+					<img
+						src={ website.Img }
+						alt={ website.Name }
+						class="max-h-full"
+						rel="preload"
+					/>
+				}
 			</div>
-			<h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">{ website.Name }</h3>
-			<p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-				{ website.Description }
-			</p>
+			<div class="mt-5">
+				<h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight line-clamp-1">{ website.Name }</h3>
+				<p class="text-slate-500 dark:text-slate-400 mt-2 text-sm line-clamp-3">
+					{ website.Description }
+				</p>
+			</div>
 		</div>
 	</a>
 }

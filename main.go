@@ -34,12 +34,24 @@ func main() {
 	})
 
 	e.POST("/add-website", func(c echo.Context) error {
+		link := c.FormValue("link")
+		fmt.Println("link", link)
+		meta, e := utilities.GetMetaData(link)
+
+		if !e {
+		}
 		var websites []models.Website
 		err := db.Find(&websites).Error
 		if err != nil {
 			fmt.Println("err", err)
 		}
-		component := components.Card(websites[0])
+
+		newWebsite := models.Website{Name: meta.Title, Description: meta.Description, Img: meta.Image, Url: link, UserId: 1}
+
+		fmt.Println(newWebsite)
+		db.Save(&newWebsite)
+
+		component := components.Card(newWebsite)
 		return component.Render(context.Background(), c.Response().Writer)
 	})
 
@@ -49,4 +61,5 @@ func main() {
 	}
 	e.Static("/static", "public")
 	e.Logger.Fatal(e.Start(":" + port))
+
 }

@@ -7,7 +7,8 @@ type Website struct {
 	Name        string
 	Description string `gorm:"type:text"`
 	Img         string `gorm:"type:text"`
-	IsFav       bool   `gorm:"type:bool"`
+	IsFav       bool   `gorm:"type:bool;default:false"`
 	CreatedAt   int64  `gorm:"autoCreateTime"`
 	Url         string `gorm:"type:text"`
+	UserId      int64  `gorm:"foreignkey:ID;"`
 }
